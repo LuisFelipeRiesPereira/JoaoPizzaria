@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= base_url('assets/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('public/assets/bootstrap.min.css') ?>">
 </head>
 <body>
 
@@ -103,6 +103,6 @@
     </div>    
 
 
-    <script src="<?= base_url('assets/bootstrap.bundle.min.css') ?>"></script>
+    <script src="<?= base_url('public/assets/bootstrap.bundle.min.css') ?>"></script>
 </body>
 </html>
