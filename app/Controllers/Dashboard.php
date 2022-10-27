@@ -21,12 +21,10 @@ class Dashboard extends BaseController
         
         $conexao = mysqli_connect($servername, $username, $password, $database);
 
-        $sql="SELECT distinct date, 
-        (SELECT sum(value) from moviment where type='input' and date=m.date) AS input,
-        (SELECT sum(value) from moviment where type='output' and date=m.date) AS output 
-        FROM moviment m";
+        $sql="SELECT date, value, type FROM moviment m";
         $retorno = mysqli_query($conexao, $sql);
 
+        
         $data = [
             'title' => 'Dashboard',
             'userInfo' => $userInfo,

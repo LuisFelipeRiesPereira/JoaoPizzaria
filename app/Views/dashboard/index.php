@@ -4,7 +4,7 @@
 
 <?php 
     while($item = mysqli_fetch_array($retorno)){
-        $data[] = $item;
+		$data[] = $item;
     }
 ?>
 
@@ -18,6 +18,7 @@
 		foreach ($dataForm as $dataExplode) {
 			$dataExplode = str_replace('-', ', ', $dataExplode);
 		}
+		
 	?>
 	<script> var dataPronta = JSON.parse('<?= json_encode($dataExplode); ?>'); </script>
 	<script src="<?php echo base_url() ?>/app/Views/dashboard/painel.js"></script>

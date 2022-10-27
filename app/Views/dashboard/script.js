@@ -6,9 +6,11 @@ var infoGraph = [];
 var titlesChart = ["Dia", "Valor"];
 infoGraph.push(titlesChart);
 
+console.log(moviments);
+
 moviments.forEach((item)=>{
   console.log(item)	    
-  chartItem = [item.date, item.value];
+  chartItem = [item.date , parseFloat(item.value)];
   infoGraph.push(chartItem);
 })
 
