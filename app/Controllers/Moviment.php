@@ -16,8 +16,7 @@ class Moviment extends BaseController
         $this->movimentModel = new MovimentModel();
     }
 
-    
-
+    //
     public function index()
     {
         $userModel = new UserModel();
@@ -59,7 +58,7 @@ class Moviment extends BaseController
 
     public function store(){
         $params = [
-            'description' => $this->request->getPost('description'),
+            'description' => $this->request->getPost('dscription'),
             'value' => $this->request->getPost('value'),
             'type' => $this->request->getPost('type'),
             'user_id' => session()->get('loggedInUser')

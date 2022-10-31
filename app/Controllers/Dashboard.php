@@ -4,9 +4,17 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UserModel;
+use App\Models\MovimentModel;
 
 class Dashboard extends BaseController
 {
+    private $movimentModel;
+
+    public function __construct()
+    {
+        $this->movimentModel = new MovimentModel();
+    }
+
     public function index()
     {
 
@@ -14,23 +22,16 @@ class Dashboard extends BaseController
         $loggedInUserId = session()->get('loggedInUser');
         $userInfo = $userModel->find($loggedInUserId);
 
-        $servername = "localhost";
-        $database = "cash_book";
-        $username = "root";
-        $password = "";
-        
-        $conexao = mysqli_connect($servername, $username, $password, $database);
-
-        $sql="SELECT date, value, type FROM moviment m";
-        $retorno = mysqli_query($conexao, $sql);
-
-        
         $data = [
             'title' => 'Dashboard',
             'userInfo' => $userInfo,
-            'retorno' => $retorno
+            'outputArray' => $this->movimentModel->where('type', 'input')->findAll(),
+            'inputArray' => $this->movimentModel->where('type','output')->findAll(),
+            'fullArray' => $this->movimentModel->findAll()
         ];
 
         return view('dashboard/index', $data);
     }
+
+
 }
