@@ -3,17 +3,17 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\MovimentModel;
+use App\Models\OrdersModel;
 use App\Models\UserModel;
 
-class Moviment extends BaseController
+class Orders extends BaseController
 {
 
-    private $movimentModel;
+    private $ordersModel;
 
     public function __construct()
     {
-        $this->movimentModel = new MovimentModel();
+        $this->ordersModel = new OrdersModel();
     }
 
     //
@@ -23,9 +23,9 @@ class Moviment extends BaseController
         $loggedInUserId = session()->get('loggedInUser');
         $userInfo = $userModel->find($loggedInUserId);
         $dados = [
-            'title' => 'Moviments',
+            'title' => 'Orders',
             'userInfo' => $userInfo,
-            'moviments' => $this->movimentModel->orderBy('id', 'DESC')->findAll()
+            'orders' => $this->ordersModel->orderBy('id', 'DESC')->findAll()
         ];
 
 
@@ -33,7 +33,7 @@ class Moviment extends BaseController
     }
 
     public function getDelete($id) {
-        if($this->movimentModel->delete($id)) {
+        if($this->ordersModel->delete($id)) {
             echo view('messages', [
                 'message' => 'Movimento excluído com sucesso'
             ]);

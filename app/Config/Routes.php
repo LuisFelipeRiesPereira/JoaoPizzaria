@@ -37,25 +37,34 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 
-$routes->get('auth', 'Auth::index');
-$routes->get('login', 'Auth::index');
-$routes->post('loginUser', 'Auth::loginUser');
-$routes->post('registerUser', 'Auth::registerUser');
-
 // Logged in user routes.
 
-$routes->group('', ['filter' => 'AuthCheck'], function($routes){
-    $routes->get('/', 'Dashboard::index');
+// 
+
+
+    //AQUI AS ROTAS ROLAM E AS FUNÇÔES DOS CONTROLLERS
+    $routes->get('/', 'ClientHome::index');
+    $routes->get('/', 'AdminHome::index');
+    $routes->post('order', 'ClientHome::create');
+    $routes->get('auth', 'Auth::index');
+    $routes->get('auth/register', 'Auth::register');
+    $routes->post('loginUser', 'Auth::loginUser');
+    $routes->post('registerUser', 'Auth::registerUser');
     $routes->get('logout', 'Auth::logout');
-    $routes->get('dashboard', 'Dashboard::index');
-    $routes->get('moviment', 'Moviment::index');
-    $routes->get('form', 'Moviment::create');
-    $routes->get('form', 'Moviment::create');
-    $routes->post('store', 'Moviment::store');
-    
+    $routes->get('clientHome', 'ClientHome::index');
+    $routes->get('adminHome', 'AdminHome::index');
+    $routes->get('orders', 'Orders::index');
+    $routes->get('admin', 'AdminHome::index');
+    $routes->get('clientOrderStatus', 'ClientHome::orderStatus');
+
+    if(session()->has('loggedInUser')){
+    $uri = current_url(true);
+    $routes->post('buttons/'.$uri->getSegment(4), 'AdminHome::buttons');
+}
+    // $routes->post('alreadyLogged', 'Auth::alreadyLogged');
 
     
-});
+// });
 
 /*
  * --------------------------------------------------------------------

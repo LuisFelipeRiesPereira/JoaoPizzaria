@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="<?= base_url('public/assets/bootstrap.min.css') ?>">
-</head>
+</head> 
 <body>
-
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col-md-4 offset-4">
-                <h4>Sign In</h4>
-                <hr>
+<section class="vh-100" style="background-color: #212529;">
+    <div class="container py-5 h-100">
+    <div class="col col-xl-10" style="margin-right: 0px; margin-left: 6vw">
+    <div class="card" style="border-radius: 1rem;">
+    <div class="row g-0">
+    <div class="col-md-6 col-lg-5 d-none d-md-block">
+    <img src="<?= base_url('public/assets/images/pizza-top.jpg') ?>"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
 
                 <?php
                     if(!empty(session()->getFlashdata('success'))){
@@ -39,41 +44,57 @@
                       class="form mb-3"
                       method="post">
                     <?= csrf_field(); ?>
-                    <div class="form-group mb-3">
-                        <label for="">E-mail</label>
+                    <div class="d-flex align-items-center mb-3 pb-1">
+                    <img src="<?= base_url('public/assets/images/logo.png') ?>" style="width: 5vw;"/></i>
+                    <span class="h1 fw-bold mb-0">João pizzaria</span>
+                  </div>
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Entre na sua conta</h5>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example17">E-mail</label>
                         <input type="text" 
-                               class="form-control"
+                        class="form-control form-control-lg"
                                name="email"
                                value="<?= set_value('email') ?>"
-                               placeholder="Email Here">
+                               placeholder="Seu e-mail"
+                               id="form2Example17"
+                               >
                         <span class="text-danger text-sm">
                             <?= isset($validation) ? display_form_errors($validation, 'email') : '' ?>
                         </span>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="">Password</label>
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form2Example27">Senha</label>
                         <input type="password" 
-                               class="form-control"
+                        class="form-control form-control-lg"
                                name="password"
+                               id="form2Example27"
                                value="<?= set_value('password') ?>"
-                               placeholder="Password Here">
+                               placeholder="Sua senha">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="pt-1 mb-4">
                         <input type="submit" 
-                               class="btn btn-info"
+                                class="btn btn-dark btn-lg btn-block"
                                value="Sign In">
                     </div>
+
                 </form>
-
-                <a href="<?= site_url('auth/register') ?>">
-                    Create a new account
+                <div>
+                <p class="mb-5 pb-lg-2" style="color: #393f81;">Não tem uma conta? <a href="<?= site_url('auth/register') ?>"
+                    style="color: #393f81;">Registre-se!</a></p>
+                    <a href="<?= site_url('/') ?>">
+                    Voltar ao home
                 </a>
+                </div>
+                
+                </div>
             </div>
+          </div>
         </div>
-    </div>    
-
+      </div>
+    </div>
+    </section>
 
     <script src="<?= base_url('public/assets/bootstrap.bundle.min.css') ?>"></script>
 </body>

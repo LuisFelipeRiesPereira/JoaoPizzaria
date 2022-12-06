@@ -12,7 +12,7 @@
     <div class="container mt-5">
         <div class="alert alert-info">
             <?= $message ?>
-            <p class="mt-3"><?= anchor(base_url('moviment'), 'Página Inicial') ?></p>
+            <p class="mt-3"><?= anchor(base_url('orders'), 'Página Inicial') ?></p>
         </div>
     </div>
     

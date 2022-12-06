@@ -21,8 +21,11 @@ class Auth extends BaseController
      * Responsible for login page view.
      */
     public function index()
-    {
-        return view('auth/login');
+    {   
+        if(session()->has('loggedInUser')){
+            return redirect()->to('/');
+        }
+        else {return view('auth/login');}
     }
 
     /**
@@ -36,14 +39,6 @@ class Auth extends BaseController
      * Save new user to database
      */
     public function registerUser(){
-        // Validate user input.
-
-        // $validated = $this->validate([
-        //     'name'         => 'required',
-        //     'email'        => 'required|valid_email',
-        //     'password'     => 'required|min_length[5]|max_length[20]',
-        //     'passwordConf' => 'required|min_length[5]|max_length[20]|matches[password]',
-        // ]);
 
         $validated = $this->validate([
             'name' => [
@@ -162,7 +157,7 @@ class Auth extends BaseController
                 $userId = $userInfo['id'];
 
                 session()->set('loggedInUser', $userId);
-                return redirect()->to('dashboard');
+                return redirect()->to('clientHome');
             }
         }
     }
@@ -175,8 +170,9 @@ class Auth extends BaseController
         if(session()->has('loggedInUser')){
             session()->remove('loggedInUser');
         }
-
-        return redirect()->to('login?access=loggedout')->with('fail', 
+        // mudado aqui, antes era 'login?access=loggedout'
+        return redirect()->to('auth?access=loggedout')->with('fail', 
         'You are logged out');
     }
+
 }

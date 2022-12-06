@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'cash_book',
+        'database' => 'db_pizza',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
