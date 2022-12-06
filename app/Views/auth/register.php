@@ -40,7 +40,7 @@
                     } 
                 ?>
 
-                <form action="<?= site_url('loginUser') ?>" 
+                <form action="<?= site_url('registerUser') ?>" 
                       class="form mb-3"
                       method="post">
                     <?= csrf_field(); ?>
